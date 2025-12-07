@@ -570,8 +570,8 @@ services:
     image: ubuntu/squid:latest
     restart: always
     volumes:
-      - ./ssrf_proxy/squid.conf.template:/etc/squid/squid.conf.template
-      - ./ssrf_proxy/docker-entrypoint.sh:/docker-entrypoint-mount.sh
+      - ../files/ssrf_proxy/squid.conf.template:/etc/squid/squid.conf.template
+      - ../files/ssrf_proxy/docker-entrypoint.sh:/docker-entrypoint-mount.sh
     entrypoint:
       [
         "sh",
@@ -593,15 +593,15 @@ services:
     image: nginx:latest
     restart: always
     volumes:
-      - ./nginx/nginx.conf.template:/etc/nginx/nginx.conf.template
-      - ./nginx/proxy.conf.template:/etc/nginx/proxy.conf.template
-      - ./nginx/https.conf.template:/etc/nginx/https.conf.template
-      - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./nginx/docker-entrypoint.sh:/docker-entrypoint-mount.sh
-      - ./nginx/ssl:/etc/ssl
-      - ./volumes/certbot/conf/live:/etc/letsencrypt/live
-      - ./volumes/certbot/conf:/etc/letsencrypt
-      - ./volumes/certbot/www:/var/www/html
+      - ../files/nginx/nginx.conf.template:/etc/nginx/nginx.conf.template
+      - ../files/nginx/proxy.conf.template:/etc/nginx/proxy.conf.template
+      - ../files/nginx/https.conf.template:/etc/nginx/https.conf.template
+      - ../files/nginx/conf.d:/etc/nginx/conf.d
+      - ../files/nginx/docker-entrypoint.sh:/docker-entrypoint-mount.sh
+      - ../files/nginx/ssl:/etc/ssl
+      - ../files/volumes/certbot/conf/live:/etc/letsencrypt/live
+      - ../files/volumes/certbot/conf:/etc/letsencrypt
+      - ../files/volumes/certbot/www:/var/www/html
     entrypoint:
       [
         "sh",
