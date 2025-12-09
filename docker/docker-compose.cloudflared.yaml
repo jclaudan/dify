@@ -708,15 +708,6 @@ services:
       db_postgres:
         condition: service_healthy
         required: false
-      db_mysql:
-        condition: service_healthy
-        required: false
-      oceanbase:
-        condition: service_healthy
-        required: false
-      seekdb:
-        condition: service_healthy
-        required: false
       redis:
         condition: service_started
     volumes:
@@ -740,15 +731,6 @@ services:
       init_permissions:
         condition: service_completed_successfully
       db_postgres:
-        condition: service_healthy
-        required: false
-      db_mysql:
-        condition: service_healthy
-        required: false
-      oceanbase:
-        condition: service_healthy
-        required: false
-      seekdb:
         condition: service_healthy
         required: false
       redis:
@@ -973,15 +955,6 @@ services:
       db_postgres:
         condition: service_healthy
         required: false
-      db_mysql:
-        condition: service_healthy
-        required: false
-      oceanbase:
-        condition: service_healthy
-        required: false
-      seekdb:
-        condition: service_healthy
-        required: false
 
   # ssrf_proxy server
   # for more information, please refer to
@@ -1087,11 +1060,6 @@ networks:
   ssrf_proxy_network:
     driver: bridge
     internal: true
-  milvus:
-    driver: bridge
-  opensearch-net:
-    driver: bridge
-    internal: true
 
 volumes:
   # Volumes simples (persistance de données)
@@ -1103,7 +1071,6 @@ volumes:
   plugin_daemon_files:     # ../files/plugin_daemon
   sandbox_dependencies_files: # ../files/sandbox/dependencies
   sandbox_conf_files:      # ../files/sandbox/conf
-
   # Volumes avec contenu de fichiers pour configuration
   ssrf_proxy_conf_template:  # ../files/ssrf_proxy/squid.conf.template
   ssrf_proxy_entrypoint:     # ../files/ssrf_proxy/docker-entrypoint.sh
@@ -1114,6 +1081,8 @@ volumes:
   nginx_entrypoint:          # ../files/nginx/docker-entrypoint.sh
   nginx_ssl:                 # ../files/nginx/ssl
   certbot_live:              # ../files/volumes/certbot/conf/live
+
+
   certbot_conf:              # ../files/volumes/certbot/conf
   certbot_www:               # ../files/volumes/certbot/www
   
